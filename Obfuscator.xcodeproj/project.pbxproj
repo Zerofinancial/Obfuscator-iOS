@@ -59,7 +59,6 @@
 				45EE05501E5BA47D00FF4281 /* Obfuscator.h */,
 				45EE05511E5BA47D00FF4281 /* Obfuscator.m */,
 			);
-			name = Obfuscator;
 			path = Obfuscator;
 			sourceTree = "<group>";
 		};
@@ -208,6 +207,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = inc.zerofinancial.obfuscator;
 				SDKROOT = "";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos watchos watchsimulator macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -258,6 +258,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = inc.zerofinancial.obfuscator;
 				SDKROOT = "";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos watchos watchsimulator macosx";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
