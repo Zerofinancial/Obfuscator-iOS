@@ -7,6 +7,12 @@
 
 #import <Foundation/Foundation.h>
 
+//! Project version number for Relay.
+FOUNDATION_EXPORT double RelayVersionNumber;
+
+//! Project version string for Relay.
+FOUNDATION_EXPORT const unsigned char RelayVersionString[];
+
 /*
  * Code based on these articles/code-samples:
  * http://www.splinter.com.au/2014/09/16/storing-secret-keys/

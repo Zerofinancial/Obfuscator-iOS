@@ -1,5 +1,7 @@
 App Obfuscator for iOS Apps
 ============================
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 
 Secure your app by obfuscating all the hard-coded security-sensitive strings.
 
@@ -31,6 +33,13 @@ Installation
 ### CocoaPods
 
 pod 'Obfuscator', '~> 2.0'
+
+### Carthage
+Add the following to your Cartfile:
+
+```
+github "pjebs/Obfuscator-iOS" ~> 0.0.1
+```
 
 ### Create Globals.h & Globals.m files
 
