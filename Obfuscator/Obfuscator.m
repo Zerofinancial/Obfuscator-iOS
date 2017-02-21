@@ -99,9 +99,6 @@ static NSMutableDictionary *saltDatabase;
 
 - (NSString *)hexByObfuscatingString:(NSString *)string silence:(BOOL)silence
 {
-    
-#ifdef DEBUG
-    
     //Convert string to C-String
     unsigned char * c_string = [self convertNSStringtoCString:string];
     NSString *obfuscatedString = [self reveal:c_string];
@@ -126,10 +123,6 @@ static NSMutableDictionary *saltDatabase;
             NSLog(@"Could not obfuscate: %@ - Use different salt", string);
         return nil;
     }
-    
-#endif
-    
-    return nil;
 }
 
 + (NSString *)reveal:(const unsigned char *)string UsingStoredSalt:(NSString *)key
@@ -180,16 +173,11 @@ static NSMutableDictionary *saltDatabase;
 
 + (BOOL)generateCodeWithSaltUnsafe:(NSString *)salt WithStrings:(NSArray *)strings
 {
-#ifdef DEBUG
     return [self generateCodeWithSaltUnsafe:salt WithStrings:strings silence:NO successfulP:nil unsuccessfulP:nil];
-#endif
-    
-    return YES;
 }
 
 + (BOOL)generateCodeWithSalt:(NSArray *)classes WithStrings:(NSArray *)strings
 {
-#ifdef DEBUG
     NSArray *successful;
     NSArray *unsuccessful;
     NSArray *selectedClasses;
@@ -242,13 +230,12 @@ static NSMutableDictionary *saltDatabase;
     NSLog(@"Salt used (in this order): %@\n", salt);
     
     [self logCodeWithSuccessful:successful unsuccessful:unsuccessful];
-#endif
+    
     return YES;
 }
 
 + (BOOL)generateCodeWithSaltUnsafe:(NSString *)salt WithStrings:(NSArray *)strings silence:(BOOL)silence successfulP:(NSMutableArray **)successfulP unsuccessfulP:(NSMutableArray **)unsuccessfulP;
 {
-#ifdef DEBUG
     // Function will return YES if process was successful in obfuscating ALL provided strings.
     // If even 1 string was not possible to obfuscate, then function will return NO.
     BOOL allSuccess = YES;
@@ -297,8 +284,6 @@ static NSMutableDictionary *saltDatabase;
     }
 
     return allSuccess;
-#endif
-    return YES;
 }
 
 #pragma mark - Helper Functions
