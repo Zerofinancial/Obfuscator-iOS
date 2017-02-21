@@ -33,25 +33,19 @@
 static NSMutableDictionary *saltDatabase;
 
 
-+ (void)storeKey:(NSString *)key forSalt:(Class)class, ...
++ (void)storeKey:(NSString *)key forSalt:(NSArray <NSValue *> *)classesArray
 {
     if (saltDatabase == nil)
         saltDatabase = [[NSMutableDictionary alloc] init];
     
-    NSMutableString *classes;
-    
-    id eachClass;
-    va_list argumentList;
-    if (class) // The first argument isn't part of the varargs list,
-    {
-        classes = [[NSMutableString alloc] initWithString:NSStringFromClass(class)];
-        va_start(argumentList, class); // Start scanning for arguments after class.
-        while ((eachClass = va_arg(argumentList, id))) // As many times as we can get an argument of type "id"
-            [classes appendString:NSStringFromClass(eachClass)];
-        va_end(argumentList);
+    NSMutableString *string = [[NSMutableString alloc] init];
+    for (NSValue *classValue in classesArray) {
+        Class c;
+        [classValue getValue:&c];
+        [string appendString:NSStringFromClass(c)];
     }
     
-    [saltDatabase setValue:[classes copy] forKey:key];
+    [saltDatabase setValue:[classesArray copy] forKey:key];
 }
 
 + (instancetype)newWithSalt:(Class)class, ...

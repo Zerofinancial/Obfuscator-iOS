@@ -130,12 +130,14 @@ FOUNDATION_EXPORT const unsigned char RelayVersionString[];
      * convenience. 
      * In order to use this library from within Swift code, you MUST use this library to store the salts used
      * to obfuscate your strings. You must use it from within your Objective-C code however.
-     * @param class List of classes to be used as salt. i.e. [NSString class], [NSObject class]...
+     * @param classesArray Array of NSValue wrapped classes to be used as salt. 
+     * i.e. @[[NSValue valueWithBytes:&class objCType:@encode(Class)]
+]
      * @param key The key associated with the list of classes in key-value database.
      * @warning Does not get bridged to Swift. Use from within Objective-C code so that the salts will become
      * available to Swift code by using: `+ (NSString *)reveal:UsingStoredSalt:` or `+ (instancetype)newUsingStoredSalt:`.
      */
-    + (void)storeKey:(NSString *)key forSalt:(Class)class, ... NS_REQUIRES_NIL_TERMINATION;
++ (void)storeKey:(NSString *)key forSalt:(NSArray <NSValue *> *)classesArray;
 
     /*!
      * @brief Converts obfuscated hard-coded C-String back to original string during run-time.
